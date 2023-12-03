@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-with open('../input', 'r') as f:
+with open('../../1.input', 'r') as f:
     lines = f.read().splitlines()
 
 
