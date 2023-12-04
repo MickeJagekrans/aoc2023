@@ -89,7 +89,6 @@ static List<int> GetAdjacentNumbers(string[] linesToCheck, int starIndex)
             // Check if we're at the end of the line or the next char is not a digit
             if (j == endPos || !char.IsDigit(line[nextIndex]))
             {
-                // This is the end of the number, get the full number
                 var fullNumber = GetFullNumber(line, j);
 
                 adjacentNumbers.Add(fullNumber);
