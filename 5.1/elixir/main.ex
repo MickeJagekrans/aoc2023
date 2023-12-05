@@ -37,14 +37,6 @@ lines = File.read!("../../5.input")
 
 [seeds | maps] = lines |> String.split("\n\n")
 
-# Convert seeds to integers
-seeds =
-  seeds
-  |> String.split(": ")
-  |> Enum.at(1)
-  |> String.split(" ")
-  |> Enum.map(&String.to_integer/1)
-
 defmodule Almanac do
   def parse_map(line) do
     line
@@ -81,6 +73,10 @@ maps =
   end)
 
 seeds
+|> String.split(": ")
+|> Enum.at(1)
+|> String.split(" ")
+|> Enum.map(&String.to_integer/1)
 |> Enum.map(&Almanac.walk(&1, maps))
 |> Enum.min()
 |> IO.inspect()
