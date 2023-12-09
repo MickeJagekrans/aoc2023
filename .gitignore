@@ -1,2 +1,9 @@
+.metals
+.ruby-lsp
+.vscode
+
 bin
 obj
+
+project
+target
