@@ -8,7 +8,6 @@ nodes = raw_nodes.split("\n").reduce({}) do |acc, node|
   acc
 end
 
-
 def find_cycle_point(instructions, nodes, start_node)
   current_node = start_node
   count = 1
