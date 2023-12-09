@@ -1,4 +1,5 @@
 .metals
+.bloop
 .ruby-lsp
 .vscode
 
