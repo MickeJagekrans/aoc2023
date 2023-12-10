@@ -11,20 +11,19 @@ def getHistories(prevList: List[Int]): List[List[Int]] =
     if history.forall(_ == 0) then newList
     else _getHistories(newList)
 
-  _getHistories.andThen(_.reverse)(prevList :: Nil)
+  _getHistories(prevList :: Nil)
 
 val splitToInts: String => List[Int] = _.split(" ").map(_.toInt).toList
+val reverseNestedLists: List[List[Int]] => List[List[Int]] = _.map(_.reverse)
+val sumListHeads: (List[Int], List[Int]) => List[Int] = (a, b) => (a.head + b.head) +: b
 
 @main def main(): Unit =
   // Read all lines from file ../../9.input
   val lines = io.Source.fromFile("../../9.input").getLines.toArray
-  val allHistories =
+  val result =
     lines
-      .map(splitToInts)
-      .map(getHistories andThen (_.map(_.reverse)))
+      .map(splitToInts andThen getHistories andThen reverseNestedLists)
+      .map(_.reduce(sumListHeads).head)
+      .reduce(_ + _)
 
-  val res =
-    allHistories
-      .map(_.reduce((acc, history) => (acc.head + history.head) +: history).head)
-
-  println(res.reduce(_ + _))
+  println(result)
